@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="interface-test-suite.xml" />
+	<munit:test name="interface-test-suite-get:\helloWorld:hello-world-configTest-Arvind" doc:id="5f5e4d4b-6bb6-4587-ae1b-bd11b87317d4" description="Test">
+		<munit:execution >
+			<munit:set-event doc:name="Set Event" doc:id="52173134-426e-43db-9f7c-1b31fe60c9b9" >
+				<munit:attributes value="#[{ queryParams:&#10; { 'greetingMessage' :  'Good Morning', 'greetingTo' : 'Arvind'}}]" mediaType="application/java" />
+				<munit:variables >
+					<munit:variable key="greetingMessage" value="Good Morning" mediaType="text/plain" />
+					<munit:variable key="greetingTo" value="Arvind" mediaType="text/plain" />
+					<munit:variable key="to" value="Arvind" mediaType="text/plain" />
+				</munit:variables>
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to get:\helloWorld:hello-world-config" doc:id="52901329-b8f6-48ca-b8c8-c9aebb4fcdcd" name="get:\helloWorld:hello-world-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="c19e1af4-6008-455d-8f87-1396009fcacf" expression="#[payload]" is="#[MunitTools::notNullValue()]"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="interface-test-suite-get:\helloWorld:hello-world-configTest-Purushotham" doc:id="9f020bc6-fb55-44cb-8ade-fd1f40c6957f" description="Test">
+			<munit:execution>
+				<munit:set-event doc:name="Set Event" doc:id="4f0f24fb-efb8-40cf-8784-d717fdce1e60">
+				<munit:attributes value="#[{ queryParams:&#10; { 'greetingMessage' :  'Good Morning', 'greetingTo' : 'Purushotham'}}]" mediaType="application/java" />
+				<munit:variables >
+					<munit:variable key="greetingMessage" value="Good Morning" mediaType="text/plain" />
+					<munit:variable key="greetingTo" value="Purushotham" mediaType="text/plain" />
+					<munit:variable key="to" value="Purushotham" mediaType="text/plain" />
+				</munit:variables>
+				</munit:set-event>
+				<flow-ref doc:name="Flow-ref to get:\helloWorld:hello-world-config" doc:id="7b42ebc7-a304-47b5-857f-9be71abedaef" name="get:\helloWorld:hello-world-config" />
+			</munit:execution>
+			<munit:validation>
+				<munit-tools:assert-that doc:name="Assert that" doc:id="6914cf87-f181-4859-88d1-b2ecc465cbb5" expression="#[payload]" is="#[MunitTools::notNullValue()]" />
+			</munit:validation>
+		</munit:test>
+	<munit:test name="interface-test-suite-get:\helloWorld:hello-world-configTest-Others" doc:id="d29614b0-38c8-4750-9ddd-a84b88d9dd2a" description="Test">
+			<munit:execution>
+				<munit:set-event doc:name="Set Event" doc:id="9fdec084-3646-4abd-87f9-8bfb6f2b9836">
+					<munit:attributes value="#[{ queryParams:&#10; { 'greetingMessage' :  'Good Morning', 'greetingTo' : 'Alex'}}]" mediaType="application/java" />
+				<munit:variables >
+					<munit:variable key="greetingMessage" value="Good Morning" mediaType="text/plain" />
+					<munit:variable key="greetingTo" value="Alex" mediaType="text/plain" />
+					<munit:variable key="to" value="Alex" mediaType="text/plain" />
+				</munit:variables>
+				</munit:set-event>
+				<flow-ref doc:name="Flow-ref to get:\helloWorld:hello-world-config" doc:id="da22e7b1-6a04-41fd-9eaa-65507d522045" name="get:\helloWorld:hello-world-config" />
+			</munit:execution>
+			<munit:validation>
+				<munit-tools:assert-that doc:name="Assert that" doc:id="4e492070-d57c-4a15-b6e0-0e34b43455fd" expression="#[payload]" is="#[MunitTools::notNullValue()]" />
+			</munit:validation>
+		</munit:test>
+
+
+</mule>

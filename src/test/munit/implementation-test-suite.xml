@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="implementation-test-suite.xml" />
+	<munit:test name="implementation-test-suite-Purushotham-success" doc:id="431ed9c1-3b1d-414a-bdbf-5fd8df376b85" description="Test">
+		<munit:execution >
+			<munit:set-event doc:name="Set Event" doc:id="731baa74-bf68-4219-bdc8-fd6d4c69a843" >
+				<munit:variables >
+					<munit:variable key="to" value="Purushotham" mediaType="text/plain" />
+					<munit:variable key="greetingTo" value="Purushotham" mediaType="text/plain" />
+				</munit:variables>
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to sendGreetingTo" doc:id="dcee8ae4-ee94-4daa-8473-c27e6a3802ed" name="sendGreetingTo"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="d8c8f151-dfab-4346-ada7-a8e8ca1828cb" expression="#[payload]" is="#[MunitTools::notNullValue()]" />
+		</munit:validation>
+	</munit:test>
+	<munit:test name="implementation-test-suite-Arvind-success" doc:id="c6948c29-e226-42e7-af73-1aac0fa33b82" description="Test">
+			<munit:execution>
+				<munit:set-event doc:name="Set Event" doc:id="c6d9843e-3558-429e-ad12-b89fad8d0279">
+				<munit:variables >
+					<munit:variable key="to" value="Arvind" mediaType="text/plain" />
+					<munit:variable key="greetingTo" value="Arvind" mediaType="text/plain" />
+				</munit:variables>
+				</munit:set-event>
+				<flow-ref doc:name="Flow-ref to sendGreetingTo" doc:id="f23a9a14-3c96-4ca6-a6d9-d1185d0bf69a" name="sendGreetingTo" />
+			</munit:execution>
+			<munit:validation>
+			<munit-tools:assert-that doc:name="Assert that" doc:id="2fea0026-cbfd-4b9b-a7fb-33eeb25c682b" expression="#[payload]" is="#[MunitTools::notNullValue()]" />
+			</munit:validation>
+		</munit:test>
+	<munit:test name="implementation-test-suite-Others-success" doc:id="f8dd802d-695d-4bb4-a000-8fb687e98678" description="Test">
+			<munit:execution>
+				<munit:set-event doc:name="Set Event" doc:id="800e0f5a-65d4-428a-8105-51670b428eb7">
+				<munit:variables >
+					<munit:variable key="to" value="Nathan" mediaType="text/plain" />
+					<munit:variable key="greetingTo" value="Nathan" mediaType="text/plain" />
+				</munit:variables>
+				</munit:set-event>
+				<flow-ref doc:name="Flow-ref to sendGreetingTo" doc:id="fba4d432-42ba-4c8a-ac87-4c1b17358250" name="sendGreetingTo" />
+			</munit:execution>
+			<munit:validation>
+				<munit-tools:assert-that doc:name="Assert that" doc:id="b8d2a536-7c11-4516-9b00-4fb1533c0860" expression="#[payload]" is="#[MunitTools::notNullValue()]" />
+			</munit:validation>
+		</munit:test>
+
+
+</mule>

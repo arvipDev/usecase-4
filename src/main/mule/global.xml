@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:jms="http://www.mulesoft.org/schema/mule/jms" xmlns:json-logger="http://www.mulesoft.org/schema/mule/json-logger"
+	xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd
+http://www.mulesoft.org/schema/mule/json-logger http://www.mulesoft.org/schema/mule/json-logger/current/mule-json-logger.xsd
+http://www.mulesoft.org/schema/mule/jms http://www.mulesoft.org/schema/mule/jms/current/mule-jms.xsd">
+	<http:listener-config name="http_Listener_Config" doc:name="HTTP Listener config" doc:id="d3995fd2-55c0-4578-802c-6db37352ab10" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<apikit:config outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" doc:name="Router" doc:id="6412da7c-0b81-4274-8271-7dba2f0524b6" name="hello-world-config" api="hello-world.raml"/>
+	<json-logger:config name="JSON_Logger_Config" doc:name="JSON Logger Config" doc:id="8d7a9ecd-42a5-4f62-890c-b93bfdb09eca" environment="${mule.env}" contentFieldsDataMasking="$..responderID,$..origin">
+	</json-logger:config>
+	<configuration-properties doc:name="Configuration properties" doc:id="4ac0afb7-017f-4834-af16-b4b5b6f1bca6" file="config.properties" />
+	<import doc:name="Import" doc:id="170a6d21-3bbd-4344-bbc0-11d021982c38" file="error-handler-utility.xml" />
+	<configuration doc:name="Configuration" doc:id="2c854aa6-ecd7-40af-970f-fb90fc248314" defaultErrorHandler-ref="Common_Error_Handler_Utility"/>
+</mule>
